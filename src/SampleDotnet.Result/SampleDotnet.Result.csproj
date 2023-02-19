@@ -16,6 +16,8 @@
 		<LangVersion>10.0</LangVersion>
 		<SignAssembly>False</SignAssembly>
 		<PackageIcon>wfc2.png</PackageIcon>
+		<Description>Single Response Model for the ActionResult</Description>
+		<PackageTags>dotnet core net5 net6 net7 single response model actionresult jsonresult</PackageTags>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net5.0|AnyCPU'">
