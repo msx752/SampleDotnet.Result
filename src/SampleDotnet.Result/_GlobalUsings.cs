@@ -1,0 +1,14 @@
+﻿global using Microsoft.AspNetCore.Builder;
+global using Microsoft.AspNetCore.Http;
+global using Microsoft.AspNetCore.Mvc;
+global using Microsoft.AspNetCore.Mvc.Infrastructure;
+global using Microsoft.Extensions.DependencyInjection;
+global using Newtonsoft.Json;
+global using Newtonsoft.Json.Serialization;
+global using SampleDotnet.Result.Abstractions;
+global using SampleDotnet.Result.Extensions;
+global using SampleDotnet.Result.Interfaces;
+global using System.ComponentModel.DataAnnotations.Schema;
+global using System.Dynamic;
+global using System.Globalization;
+global using System.Runtime.Serialization;
