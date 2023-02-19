@@ -6,7 +6,7 @@ Single Response Model for the ActionResult
 
 # How to Use
 ``` c#
-using SampleProject.Result;
+using SampleDotnet.Result;
 ```
 Success(Status:200) ResponseModel
 ``` c#
