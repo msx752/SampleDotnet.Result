@@ -1,4 +1,4 @@
-[![nuget](https://img.shields.io/badge/SampleDotnet.Result-brightgreen.svg?maxAge=259200)](https://www.nuget.org/packages/SampleDotnet.Result)
+[![nuget](https://img.shields.io/badge/nuget-SampleDotnet.Result-brightgreen.svg?maxAge=259200)](https://www.nuget.org/packages/SampleDotnet.Result)
 [![nuget](https://img.shields.io/nuget/v/SampleDotnet.Result.svg)](https://www.nuget.org/packages/SampleDotnet.Result)
 
 # SampleDotnet.Result
