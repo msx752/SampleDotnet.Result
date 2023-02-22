@@ -1,4 +1,5 @@
 [![nuget](https://img.shields.io/badge/nuget-SampleDotnet.Result-brightgreen.svg?maxAge=259200)](https://www.nuget.org/packages/SampleDotnet.Result)
+[![build](https://github.com/msx752/SampleDotnet.Result/actions/workflows/dotnet.yml/badge.svg?branch=main)](https://github.com/msx752/SampleDotnet.Result/actions/workflows/dotnet.yml)
 [![nuget](https://img.shields.io/nuget/v/SampleDotnet.Result.svg)](https://www.nuget.org/packages/SampleDotnet.Result)
 
 # SampleDotnet.Result
