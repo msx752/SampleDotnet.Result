@@ -17,6 +17,13 @@ public IActionResult Get()
     
     return new OkResponse(someResponseData);
 }
+
+public IActionResult Get()
+{
+    CartDto singleData = GetSingleData();
+    
+    return new OkResponse(singleData);
+}
 ```
 
 NotFound(Status:404) ResponseModel
