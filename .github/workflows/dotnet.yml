@@ -34,7 +34,7 @@ jobs:
     - name: Add source
       run: |
         dotnet nuget add source \
-           --username MSAslim --password "${{ secrets.NUGET_PAT }}" \
+           --username MSAslim --password "${{ secrets.NUGET_PAT_SAMPLEDOTNET }}" \
            --store-password-in-clear-text --name github "https://api.nuget.org/v3/index.json"
              
     - name: Install dependencies
