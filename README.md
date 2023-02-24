@@ -1,6 +1,6 @@
-[![nuget](https://img.shields.io/badge/nuget-SampleDotnet.Result-brightgreen.svg?maxAge=259200)](https://www.nuget.org/packages/SampleDotnet.Result)
+[![Nuget](https://img.shields.io/badge/package-SampleDotnet.Result-brightgreen.svg?maxAge=259200)](https://www.nuget.org/packages/SampleDotnet.Result)
 [![CodeQL](https://github.com/msx752/SampleDotnet.Result/actions/workflows/codeql.yml/badge.svg?branch=main)](https://github.com/msx752/SampleDotnet.Result/actions/workflows/codeql.yml)
-[![nuget](https://img.shields.io/nuget/v/SampleDotnet.Result.svg)](https://www.nuget.org/packages/SampleDotnet.Result)
+[![MIT](https://img.shields.io/badge/License-MIT-blue.svg?maxAge=259200)](https://github.com/msx752/SampleDotnet.Result/blob/master/LICENSE.md)
 
 # SampleDotnet.Result
 Single Response Model for the ActionResult
