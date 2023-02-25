@@ -1,6 +1,6 @@
 ﻿namespace SampleDotnet.Result;
 
-public sealed class UnauthorizedResponse
+public class UnauthorizedResponse
     : BaseJsonResult
 {
     public UnauthorizedResponse()

@@ -1,6 +1,6 @@
 ﻿namespace SampleDotnet.Result;
 
-public sealed class OkResponse
+public class OkResponse
     : BaseJsonResult
 {
     public OkResponse()

@@ -1,6 +1,6 @@
 ﻿namespace SampleDotnet.Result;
 
-public sealed class NotFoundResponse
+public class NotFoundResponse
     : BaseJsonResult
 {
     public NotFoundResponse()
@@ -9,7 +9,7 @@ public sealed class NotFoundResponse
     }
 
     public NotFoundResponse(string message)
-        : base(StatusCodes.Status400BadRequest, message)
+        : base(StatusCodes.Status404NotFound, message)
     {
     }
 }
