@@ -1,6 +1,6 @@
 ﻿namespace SampleDotnet.Result;
 
-public sealed class BadRequestResponse
+public class BadRequestResponse
     : BaseJsonResult
 {
     public BadRequestResponse()

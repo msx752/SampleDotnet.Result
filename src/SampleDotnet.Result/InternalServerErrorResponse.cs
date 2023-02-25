@@ -1,6 +1,6 @@
 ﻿namespace SampleDotnet.Result;
 
-public sealed class InternalServerErrorResponse
+public class InternalServerErrorResponse
     : BaseJsonResult
 {
     public InternalServerErrorResponse()

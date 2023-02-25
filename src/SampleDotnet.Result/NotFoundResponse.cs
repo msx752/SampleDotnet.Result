@@ -1,6 +1,6 @@
 ﻿namespace SampleDotnet.Result;
 
-public sealed class NotFoundResponse
+public class NotFoundResponse
     : BaseJsonResult
 {
     public NotFoundResponse()
