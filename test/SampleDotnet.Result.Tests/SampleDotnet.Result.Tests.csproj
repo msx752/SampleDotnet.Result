@@ -38,5 +38,8 @@
 	<ItemGroup>
 		<ProjectReference Include="..\..\src\SampleDotnet.Result\SampleDotnet.Result.csproj" />
 	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="MockApiServer\" />
+	</ItemGroup>
 
 </Project>
