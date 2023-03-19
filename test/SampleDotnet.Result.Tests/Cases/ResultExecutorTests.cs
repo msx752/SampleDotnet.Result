@@ -11,7 +11,7 @@ using System.Net;
 
 namespace SampleDotnet.Result.Tests.Cases;
 
-public class ExecuteTests : MainControllerTests
+public class ResultExecutorTests : MainControllerTests
 {
     [Fact]
     public async Task ExecuteRequestTrackingId()
