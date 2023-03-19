@@ -14,7 +14,7 @@ namespace SampleDotnet.Result.Tests.Cases;
 public class ResultExecutorTests : MainControllerTests
 {
     [Fact]
-    public async Task ExecuteRequestTrackingId()
+    public async Task ExecuteRequestTrackingIdWithNewtonsoftJsonSerializer()
     {
         var client = CreateMockApiServer((services) =>
         {
@@ -23,7 +23,7 @@ public class ResultExecutorTests : MainControllerTests
         (app) =>
         {
             app.UseElapsedTimeMeasurement();
-        });
+        }, true);
 
         var response = await client.GetAsync("/api/Test/RequestOkResponseModel");
 
@@ -38,7 +38,7 @@ public class ResultExecutorTests : MainControllerTests
     }
 
     [Fact]
-    public async Task ExecuteMeasuredResponsTime()
+    public async Task ExecuteMeasuredResponsTimeWithNewtonsoftJsonSerializer()
     {
         var client = CreateMockApiServer((services) =>
         {
@@ -47,7 +47,56 @@ public class ResultExecutorTests : MainControllerTests
         (app) =>
         {
             app.UseElapsedTimeMeasurement();
-        });
+        }, true);
+
+        var response = await client.GetAsync("/api/Test/RequestOkResponseModel");
+
+        response.StatusCode.ShouldBe(HttpStatusCode.OK);
+
+        ResponseModel<TestDatumDto> data = Response<ResponseModel<TestDatumDto>>(response);
+
+        data.ShouldNotBeNull();
+        data.Results.ShouldNotBeNull();
+        data.Results.Count.ShouldBe(2);
+        ((long)data.Stats.offset).ShouldNotBe(0);
+        ((string)data.Stats.elapsedmilliseconds).ShouldNotBeNull();
+    }
+
+    [Fact]
+    public async Task ExecuteRequestTrackingIdWithSystemTextJsonSerializer()
+    {
+        var client = CreateMockApiServer((services) =>
+        {
+            services.AddSingleton<IBaseResultExecutor, ExecuteRequestTrackingId>();
+        },
+        (app) =>
+        {
+            app.UseElapsedTimeMeasurement();
+        }, false);
+
+        var response = await client.GetAsync("/api/Test/RequestOkResponseModel");
+
+        response.StatusCode.ShouldBe(HttpStatusCode.OK);
+
+        ResponseModel<TestDatumDto> data = Response<ResponseModel<TestDatumDto>>(response);
+
+        data.ShouldNotBeNull();
+        data.Results.ShouldNotBeNull();
+        data.Results.Count.ShouldBe(2);
+        ((string)data.Stats.rid).ShouldNotBeNull();
+    }
+
+    [Fact]
+    public async Task ExecuteMeasuredResponsTimeWithSystemTextJsonSerializer()
+    {
+        var client = CreateMockApiServer((services) =>
+        {
+            services.AddSingleton<IBaseResultExecutor, ExecuteMeasuredResponsTime>();
+        },
+        (app) =>
+        {
+            app.UseElapsedTimeMeasurement();
+        }, false);
 
         var response = await client.GetAsync("/api/Test/RequestOkResponseModel");
 

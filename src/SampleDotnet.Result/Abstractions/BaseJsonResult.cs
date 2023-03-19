@@ -7,35 +7,35 @@ public class BaseJsonResult : JsonResult
 
     {
         StatusCode = statusCode;
-        this.DefaultCtorValues();
+        this.ContentType = _Constants.ContentType_ApplicationJson;
     }
 
     public BaseJsonResult(int statusCode, IEnumerable<string> errorMessages)
         : base(new ResponseModel(errorMessages))
     {
         StatusCode = statusCode;
-        this.DefaultCtorValues();
+        this.ContentType = _Constants.ContentType_ApplicationJson;
     }
 
     public BaseJsonResult(int statusCode, string errorMessages)
         : base(new ResponseModel(errorMessages))
     {
         StatusCode = statusCode;
-        this.DefaultCtorValues();
+        this.ContentType = _Constants.ContentType_ApplicationJson;
     }
 
     public BaseJsonResult(int statusCode, object body)
         : base(new ResponseModel<object>(body))
     {
         StatusCode = statusCode;
-        this.DefaultCtorValues();
+        this.ContentType = _Constants.ContentType_ApplicationJson;
     }
 
     public BaseJsonResult(int statusCode, IEnumerable<object> body)
         : base(new ResponseModel<object>(body), null)
     {
         StatusCode = statusCode;
-        this.DefaultCtorValues();
+        this.ContentType = _Constants.ContentType_ApplicationJson;
     }
 
     [NotMapped]
@@ -50,11 +50,6 @@ public class BaseJsonResult : JsonResult
 
             return (IResponseModel)Value;
         }
-    }
-
-    public virtual JsonSerializerSettings ConfigureJsonSerializerSettings()
-    {
-        return JsonConvert.DefaultSettings?.Invoke() ?? new JsonSerializerSettings();
     }
 
     public override async Task ExecuteResultAsync(ActionContext context)
@@ -80,6 +75,11 @@ public class BaseJsonResult : JsonResult
 
         if (this.Model.Stats is ExpandoObject eobj && !eobj.Any())
             this.Model.Stats = null;
+
+        if (executor.GetType().Name == "NewtonsoftJsonResultExecutor")
+            this.SerializerSettings = (JsonConvert.DefaultSettings?.Invoke() ?? new JsonSerializerSettings());
+        else
+            this.SerializerSettings = new System.Text.Json.JsonSerializerOptions();
 
         await executor.ExecuteAsync(context, this);
     }

@@ -36,7 +36,7 @@ namespace SampleDotnet.Result.Tests.Cases
             }
         }
 
-        internal HttpClient CreateMockApiServer(Action<IServiceCollection> servicesAction, Action<IApplicationBuilder> appAction)
+        internal HttpClient CreateMockApiServer(Action<IServiceCollection> servicesAction, Action<IApplicationBuilder> appAction, bool useNewtonsoftSerializer)
         {
             WebApplicationFactory<Program> app = new WebApplicationFactory<Program>()
             .WithWebHostBuilder(builder =>
@@ -48,7 +48,12 @@ namespace SampleDotnet.Result.Tests.Cases
                     servicesAction?.Invoke(services);
 
                     services.AddEndpointsApiExplorer();
-                    services.AddControllers().AddNewtonsoftJson();
+
+                    var mvcBuilder = services.AddControllers();
+                    if (useNewtonsoftSerializer)
+                    {
+                        mvcBuilder.AddNewtonsoftJson();
+                    }
                 });
 
                 builder.Configure((builderContext, app) =>

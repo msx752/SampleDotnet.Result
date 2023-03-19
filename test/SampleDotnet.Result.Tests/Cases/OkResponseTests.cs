@@ -5,9 +5,9 @@ public class OkResponseTests
     private const int statusCode_OK = 200;
 
     [Fact]
-    public void OkResponse_Default()
+    public void OkResponse_DefaultWithNewtonsoftSerializer()
     {
-        OkResponse response = new OkResponse();
+        OkResponse response = new OkResponse() { SerializerSettings = new JsonSerializerSettings() };
 
         response.Model.Errors.ShouldBeNull();
         response.ShouldValidatetCommons(statusCode_OK);
@@ -15,10 +15,10 @@ public class OkResponseTests
     }
 
     [Fact]
-    public void OkResponse_Ctor1()
+    public void OkResponse_Ctor1WithNewtonsoftSerializer()
     {
         OkResponseTestData responseObject = new OkResponseTestData { strval1 = "valueOfName" };
-        OkResponse response = new OkResponse(responseObject);
+        OkResponse response = new OkResponse(responseObject) { SerializerSettings = new JsonSerializerSettings() };
 
         response.ShouldValidatetCommons(statusCode_OK);
         response.Model.Errors.ShouldBeNull();
@@ -29,10 +29,10 @@ public class OkResponseTests
     }
 
     [Fact]
-    public void OkResponse_Ctor2()
+    public void OkResponse_Ctor2WithNewtonsoftSerializer()
     {
         IEnumerable<OkResponseTestData> responseObjects = new List<OkResponseTestData> { new OkResponseTestData() { strval1 = "valueOfName1", intval1 = 1 }, new OkResponseTestData { strval1 = "valueOfName2", intval1 = 2 } };
-        OkResponse response = new OkResponse(responseObjects);
+        OkResponse response = new OkResponse(responseObjects) { SerializerSettings = new JsonSerializerSettings() };
 
         response.ShouldValidatetCommons(statusCode_OK);
         response.Model.Errors.ShouldBeNull();
@@ -43,10 +43,10 @@ public class OkResponseTests
     }
 
     [Fact]
-    public void StatusCodeResponse_Ctor1()
+    public void StatusCodeResponse_Ctor1WithNewtonsoftSerializer()
     {
         OkResponseTestData responseObject = new OkResponseTestData { strval1 = "valueOfName" };
-        StatusCodeResponse response = new StatusCodeResponse(statusCode_OK, responseObject);
+        StatusCodeResponse response = new StatusCodeResponse(statusCode_OK, responseObject) { SerializerSettings = new JsonSerializerSettings() };
 
         response.ShouldValidatetCommons(statusCode_OK);
         response.Model.Errors.ShouldBeNull();
@@ -57,10 +57,10 @@ public class OkResponseTests
     }
 
     [Fact]
-    public void StatusCodeResponse_Ctor2()
+    public void StatusCodeResponse_Ctor2WithNewtonsoftSerializer()
     {
         IEnumerable<OkResponseTestData> responseObjects = new List<OkResponseTestData> { new OkResponseTestData() { strval1 = "valueOfName1", intval1 = 1 }, new OkResponseTestData { strval1 = "valueOfName2", intval1 = 2 } };
-        StatusCodeResponse response = new StatusCodeResponse(statusCode_OK, responseObjects);
+        StatusCodeResponse response = new StatusCodeResponse(statusCode_OK, responseObjects) { SerializerSettings = new JsonSerializerSettings() };
 
         response.ShouldValidatetCommons(statusCode_OK);
         response.Model.Errors.ShouldBeNull();
