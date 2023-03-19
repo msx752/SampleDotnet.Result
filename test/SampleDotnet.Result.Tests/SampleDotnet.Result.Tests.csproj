@@ -9,6 +9,16 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <None Remove="MockApiServer\appsettings.Test.json" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Content Include="MockApiServer\appsettings.Test.json">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+		<Content Include="MockApiServer\appsettings.json">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
 		<Content Include="xunit.runner.json">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
@@ -37,9 +47,6 @@
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\..\src\SampleDotnet.Result\SampleDotnet.Result.csproj" />
-	</ItemGroup>
-	<ItemGroup>
-	  <Folder Include="MockApiServer\" />
 	</ItemGroup>
 
 </Project>

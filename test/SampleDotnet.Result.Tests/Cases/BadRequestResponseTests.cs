@@ -1,4 +1,4 @@
-﻿namespace SampleDotnet.Result.Tests;
+﻿namespace SampleDotnet.Result.Tests.Cases;
 
 public class BadRequestResponseTests
 {
