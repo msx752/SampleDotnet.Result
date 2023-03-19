@@ -1,14 +1,12 @@
-# This workflow will build a .NET project
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
-name: xunit-tests
+name: Dotnet
+
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    pull_request: [ main ]
+
 jobs:
   build:
-  
+
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -17,16 +15,23 @@ jobs:
       actions: read
       contents: read
       security-events: write
-      
+
     steps:
     - uses: actions/checkout@v3
     - name: Setup .NET Core SDK ${{ matrix.dotnet-version }}
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: ${{ matrix.dotnet-version }}
-
-    - name: Install dependencies
+    - name: Restore dependencies
       run: dotnet restore
-      
+    - name: Build
+      run: dotnet build -c Release
     - name: Test
       run: dotnet test test/SampleDotnet.Result.Tests/SampleDotnet.Result.Tests.csproj --no-restore --verbosity normal
+
+    - name: publish
+      id: SampleDotnet_Result
+      uses: alirezanet/publish-nuget@v3.0.3
+      with:
+          PROJECT_FILE_PATH: src/SampleDotnet.Result/SampleDotnet.Result.csproj
+          NUGET_KEY: ${{secrets.NUGET_KEY}}
