@@ -1,23 +1,23 @@
-﻿namespace SampleDotnet.Result.Tests;
+﻿namespace SampleDotnet.Result.Tests.Cases;
 
 public class InternalServerErrorResponseTests
 {
     private const int statusCode_INTERNALSERVERERROR = 500;
 
     [Fact]
-    public void InternalServerErrorResponse_Default()
+    public void InternalServerErrorResponse_DefaultWithNewtonsoftSerializer()
     {
-        InternalServerErrorResponse response = new InternalServerErrorResponse();
+        InternalServerErrorResponse response = new InternalServerErrorResponse() { SerializerSettings = new JsonSerializerSettings() };
 
         response.Model.Errors.ShouldBeNull();
         response.ShouldBeDefaultResponseModel(new ResponseModel());
     }
 
     [Fact]
-    public void InternalServerErrorResponse_Ctor1()
+    public void InternalServerErrorResponse_Ctor1WithNewtonsoftSerializer()
     {
         string responseObject = "User Friendly Message1";
-        InternalServerErrorResponse response = new InternalServerErrorResponse(responseObject);
+        InternalServerErrorResponse response = new InternalServerErrorResponse(responseObject) { SerializerSettings = new JsonSerializerSettings() };
 
         response.ShouldValidatetCommons(statusCode_INTERNALSERVERERROR);
         response.Model.ShouldNotBeNull();
@@ -28,10 +28,10 @@ public class InternalServerErrorResponseTests
     }
 
     [Fact]
-    public void InternalServerErrorResponse_Ctor2()
+    public void InternalServerErrorResponse_Ctor2WithNewtonsoftSerializer()
     {
         IEnumerable<string> responseObjects = new List<string> { "User Friendly Message1", "User Friendly Message2" };
-        InternalServerErrorResponse response = new InternalServerErrorResponse(responseObjects);
+        InternalServerErrorResponse response = new InternalServerErrorResponse(responseObjects) { SerializerSettings = new JsonSerializerSettings() };
 
         response.ShouldValidatetCommons(statusCode_INTERNALSERVERERROR);
         response.Model.ShouldNotBeNull();
